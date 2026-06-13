@@ -1,0 +1,12 @@
+.text-orange {
+    color: #f97316;
+  }
+  
+  .link-orange:hover,
+  .link-orange:hover span {
+    color: #f97316;
+  }
+
+  .dropdown-toggle::after {
+    display: none;
+}
