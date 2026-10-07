@@ -1,7 +1,11 @@
-@props(['trigger', 'content'])
+@props([
+    'trigger',
+    'content',
+    'id' => 'navbarDropdown',
+])
+
 <li class="nav-item dropdown">
-    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false" v-pre>
+    <a id="{{ $id }}" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-person-circle text-orange"></i>
         <span class="link-orange">
             {{ $trigger }}
