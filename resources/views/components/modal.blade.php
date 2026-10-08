@@ -1,22 +1,24 @@
-@props(['name', 'show' => false, 'maxWidth' => 'lg'])
+@props([
+    'name',
+    'show' => false,
+    'maxWidth' => 'lg',
+])
 
 @php
-    $maxWidth = [
+    $maxWidthClass = [
         'sm' => 'modal-sm',
         'md' => 'modal-md',
         'lg' => 'modal-lg',
         'xl' => 'modal-xl',
-    ][$maxWidth];
+    ][$maxWidth] ?? 'modal-lg';
 @endphp
 
-<!-- Modal -->
-<div class="modal fade" id="{{ $name }}" tabindex="-1" aria-labelledby="{{ $name }}Label" aria-hidden="true"
-    data-modal="{{ $show }}">
-    <div class="modal-dialog {{ $maxWidth }}">
-        <div class="modal-content">
-            <div class="modal-body p-4">
-                {{ $slot }}
-            </div>
-        </div>
+<dialog 
+    id="{{ $name }}" 
+    class="app-dialog {{ $maxWidthClass }}"
+    @if($show) data-auto-show="true" @endif
+>
+    <div class="app-dialog-content">
+        {{ $slot }}
     </div>
-</div>
+</dialog>

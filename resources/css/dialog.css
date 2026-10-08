@@ -1,0 +1,42 @@
+.app-dialog {
+  padding: 0;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 90%;
+}
+
+.app-dialog.modal-sm { max-width: 300px; }
+.app-dialog.modal-md { max-width: 500px; }
+.app-dialog.modal-lg { max-width: 800px; }
+.app-dialog.modal-xl { max-width: 1140px; }
+
+.app-dialog-content {
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 0.5rem;
+}
+
+/* Затемнение фона */
+.app-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+/* Анимация появления */
+.app-dialog[open] {
+  animation: dialogFadeIn 0.2s ease-out;
+}
+
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

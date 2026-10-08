@@ -1,29 +1,45 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="h5 mb-0">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
-
-    <div class="row justify-content-center my-5">
+<x-layouts.inner
+    :title="__('Profile')"
+>
+    <div class="row justify-content-center my-4">
         <div class="col">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+            <x-panels.profile.card-parts
+                id="profile-information"
+                :header="__('Profile Information')"
+                :description="__('Update your account\'s profile information and email address.')"
+            >
+                <x-panels.profile.update-profile-information-form :user="$user"/>
+            </x-panels.profile.card-parts>
 
-            <div class="card shadow-sm mt-4">
-                <div class="card-body">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
+            <x-panels.profile.card-parts
+                id="update-password"
+                :header="__('Update Password')"
+                :description="__('Ensure your account is using a long, random password to stay secure.')"
+                class="mt-4"
+            >
+                <x-panels.profile.update-password-form/>
+            </x-panels.profile.card-parts>
 
-            <div class="card shadow-sm mt-4">
-                <div class="card-body">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
+            <x-panels.profile.card-parts
+                id="delete-account"
+                :header="__('Delete Account')"
+                :description="__('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.')"
+                class="mt-4"
+            >
+                <x-forms.buttons.danger-button
+                    type="button"
+                    onclick="document.getElementById('confirm-user-deletion').showModal()"
+                >
+                    {{ __('Delete Account') }}
+                </x-forms.buttons.danger-button>
+
+                <x-modal 
+                    name="confirm-user-deletion" 
+                    :show="$errors->userDeletion->isNotEmpty()"
+                >
+                    <x-panels.profile.delete-user-form error-bag="userDeletion"/>
+                </x-modal>
+            </x-panels.profile.card-parts>
         </div>
     </div>
-</x-app-layout>
+</x-layouts.inner>
