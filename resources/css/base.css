@@ -1,12 +1,49 @@
 .text-orange {
-    color: #f97316;
-  }
-  
-  .link-orange:hover,
-  .link-orange:hover span {
-    color: #f97316;
-  }
+  color: #f97316;
+}
 
-  .dropdown-toggle::after {
-    display: none;
+.text-gray {
+  color: #6c757d !important;
+}
+
+.link-orange:hover,
+.link-orange:hover span {
+  color: #f97316;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.btn-orange {
+  background-color: #f97316;
+  border-color: #f97316;
+  color: white;
+}
+
+.btn-orange:hover {
+  background-color: #ea580c;
+  border-color: #ea580c;
+  color: white;
+}
+
+.form-check-input:checked {
+    background-color: #f97316 !important;
+    border-color: #f97316 !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: #f97316;
+    box-shadow: 0 0 0 0.25rem rgba(249, 115, 22, 0.15);
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+
+.fade-out {
+  animation: fadeOut 5s forwards;
 }

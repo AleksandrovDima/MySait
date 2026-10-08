@@ -1,33 +1,35 @@
-<x-guest-layout>
+<x-layouts.inner
+    :title="__('Register')"
+>
+
     <div class="mb-4 text-muted">
         {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
     </div>
 
-    @if (session('status') == 'verification-link-sent')
-        <div class="mb-4 text-success">
-            <strong>
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-            </strong>
-        </div>
+    @if(session('status'))
+        <x-panels.messages.success class="mb-4" :messages="[__('A new verification link has been sent to the email address you provided during registration.') ]" />
     @endif
 
-    <div class="mt-4 d-flex align-items-center justify-content-between">
-        <form method="POST" action="{{ route('verification.send') }}">
+    <div class="d-flex align-items-center justify-content-between mt-4">
+        <x-forms.form method="POST" action="{{ route('verification.send') }}">
             @csrf
 
-            <div>
-                <x-primary-button>
+            <div class="d-flex align-items-center gap-3">
+                <x-forms.buttons.submit-button>
                     {{ __('Resend Verification Email') }}
-                </x-primary-button>
+                </x-forms.buttons.submit-button>
             </div>
-        </form>
+        </x-forms.form>
 
-        <form method="POST" action="{{ route('logout') }}">
+        <x-forms.form method="POST" action="{{ route('logout') }}">
             @csrf
 
-            <button type="submit" class="btn btn-link text-secondary">
-                {{ __('Log Out') }}
-            </button>
-        </form>
+            <div class="d-flex align-items-center gap-3">
+                <x-forms.buttons.secondary-submit-button>
+                    {{ __('Log Out') }}
+                </x-forms.buttons.secondary-submit-button>
+            </div>
+        </x-forms.form>
     </div>
-</x-guest-layout>
+
+</x-layouts.inner>

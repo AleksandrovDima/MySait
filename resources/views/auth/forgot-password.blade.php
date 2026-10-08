@@ -1,26 +1,24 @@
-<x-guest-layout>
+<x-layouts.inner
+    :title="__('Password recovery')"
+>
+
     <div class="text-muted mb-4">
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
     </div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    @if(session('status'))
+        <x-panels.messages.success class="mb-4" :messages="(array) session('status')" />
+    @endif
 
-    <form method="POST" action="{{ route('password.email') }}">
+    <x-forms.form method="POST" action="{{ route('password.email') }}">
         @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" type="email" name="email" :value="old('email')" :class="$errors->get('email') ? 'is-invalid' : ''" required
-                autofocus />
-            <x-input-error :messages="$errors->get('email')" />
-        </div>
+        <x-forms.concrete-forms-fields.fields.email :autofocus="true"/>
 
-        <div class="text-end mt-3">
-            <x-primary-button>
+        <div class="d-flex align-items-center gap-3">
+            <x-forms.buttons.submit-button>
                 {{ __('Email Password Reset Link') }}
-            </x-primary-button>
+            </x-forms.buttons.submit-button>
         </div>
-    </form>
-</x-guest-layout>
+    </x-forms.form>
+</x-layouts.app>
