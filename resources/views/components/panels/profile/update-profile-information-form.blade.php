@@ -9,10 +9,12 @@
     <x-forms.concrete-forms-fields.fields.email email="{{ $user->email ?? '' }}"/>
 
     <x-forms.actions>
-        <x-forms.buttons.submit-button>{{ __('Save') }}</x-forms.buttons.submit-button>
+        <x-ui.button type="submit" variant="primary">
+            {{ __('Save') }}
+        </x-ui.button>
 
         @if (session('status') === 'profile-updated')
-            <p class="text-orange mb-0 fade-out">
+            <p class="status-message text-orange mb-0 fade-out">
                 {{ __('Saved.') }}
             </p>
         @endif

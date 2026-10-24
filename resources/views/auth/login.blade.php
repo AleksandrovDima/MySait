@@ -25,16 +25,14 @@
         </x-forms.groups.checkbox-group>
 
         <x-forms.actions>
-            <x-forms.buttons.submit-button>
+            <x-ui.button type="submit" variant="primary">
                 {{ __('Log in') }}
-            </x-forms.buttons.submit-button>
-            @if (Route::has('password.request'))
-                <a class="text-gray" href="{{ route('password.request') }}">
-                    <span class="link-orange">
+            </x-ui.button>
+                @if (Route::has('password.request'))
+                    <x-ui.links.text :href="route('password.request')">
                         {{ __('Forgot your password?') }}
-                    </span>
-                </a>
-            @endif
+                    </x-ui.links.text>
+                @endif
         </x-forms.actions>
     </x-forms.form>
 </x-layouts.inner>

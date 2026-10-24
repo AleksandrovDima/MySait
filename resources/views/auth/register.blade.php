@@ -16,14 +16,12 @@
         <x-forms.fields.password :withConfirmation="true" autocomplete="new-password"/>
 
         <x-forms.actions>
-            <x-forms.buttons.submit-button>
+            <x-ui.button type="submit" variant="primary">
                 {{ __('Register') }}
-            </x-forms.buttons.submit-button>
-            <a class="text-gray" href="{{ route('login') }}">
-                <span class="link-orange">
-                    {{ __('Already registered?') }}
-                </span>
-            </a>
+            </x-ui.button>
+            <x-ui.links.text :href="route('login')">
+                {{ __('Already registered?') }}
+            </x-ui.links.text>
         </x-forms.actions>
     </x-forms.form>
 </x-layouts.inner>

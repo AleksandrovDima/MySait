@@ -22,15 +22,20 @@
     />
 
     <x-forms.actions class="mt-3 justify-content-end">
-        <x-forms.buttons.secondary-button 
+        <x-ui.button 
             type="button"
+            variant="secondary"
             onclick="this.closest('dialog').close()"
         >
             {{ __('Cancel') }}
-        </x-forms.buttons.secondary-button>
+        </x-ui.button>
 
-        <x-forms.buttons.danger-button class="ms-3">
+        <x-ui.button
+            class="ms-3"
+            type="submit"
+            variant="danger"
+        >
             {{ __('Delete Account') }}
-        </x-forms.buttons.danger-button>
+        </x-ui.button>
     </x-forms.actions>
 </form>

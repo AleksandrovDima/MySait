@@ -15,9 +15,9 @@
             @csrf
 
             <div class="d-flex align-items-center gap-3">
-                <x-forms.buttons.submit-button>
+                <x-ui.button type="submit" variant="primary">
                     {{ __('Resend Verification Email') }}
-                </x-forms.buttons.submit-button>
+                </x-ui.button>
             </div>
         </x-forms.form>
 
@@ -25,9 +25,9 @@
             @csrf
 
             <div class="d-flex align-items-center gap-3">
-                <x-forms.buttons.secondary-submit-button>
+                <x-ui.button type="submit" variant="secondary">
                     {{ __('Log Out') }}
-                </x-forms.buttons.secondary-submit-button>
+                </x-ui.button>
             </div>
         </x-forms.form>
     </div>

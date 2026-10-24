@@ -1,4 +1,4 @@
-<x-forms.groups.group for="password" :errors="$passwordErrors">
+<x-forms.groups.group for="$id" :errors="$passwordErrors">
     <x-slot:label>{{ $passwordLabel }}</x-slot:label>
 
     <x-forms.inputs.text

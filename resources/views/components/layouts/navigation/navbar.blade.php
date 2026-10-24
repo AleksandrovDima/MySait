@@ -4,7 +4,7 @@
 
         <button class="navbar-toggler text-orange" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"
             aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="collapsibleNavbar">

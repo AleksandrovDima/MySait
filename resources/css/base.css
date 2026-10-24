@@ -3,7 +3,7 @@
 }
 
 .text-gray {
-  color: #6c757d !important;
+  color: #6c757d;
 }
 
 .link-orange:hover,
@@ -45,5 +45,5 @@
 }
 
 .fade-out {
-  animation: fadeOut 5s forwards;
+  animation: fadeOut 10s forwards;
 }

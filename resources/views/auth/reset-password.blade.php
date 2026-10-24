@@ -18,9 +18,9 @@
         />
 
         <div class="d-flex align-items-center gap-3">
-            <x-forms.buttons.submit-button>
+            <x-ui.button type="submit" variant="primary">
                 {{ __('Reset Password') }}
-            </x-forms.buttons.submit-button>
+            </x-ui.button>
         </div>
     </x-forms.form>
 </x-layouts.inner>

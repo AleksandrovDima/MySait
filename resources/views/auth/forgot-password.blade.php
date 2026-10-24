@@ -16,9 +16,9 @@
         <x-forms.concrete-forms-fields.fields.email :autofocus="true"/>
 
         <div class="d-flex align-items-center gap-3">
-            <x-forms.buttons.submit-button>
+            <x-ui.button type="submit" variant="primary">
                 {{ __('Email Password Reset Link') }}
-            </x-forms.buttons.submit-button>
+            </x-ui.button>
         </div>
     </x-forms.form>
 </x-layouts.app>

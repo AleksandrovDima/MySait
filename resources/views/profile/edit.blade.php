@@ -26,12 +26,14 @@
                 :description="__('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.')"
                 class="mt-4"
             >
-                <x-forms.buttons.danger-button
+                <x-ui.button
                     type="button"
+                    variant="danger"
+                    class="mt-3"
                     onclick="document.getElementById('confirm-user-deletion').showModal()"
                 >
                     {{ __('Delete Account') }}
-                </x-forms.buttons.danger-button>
+                </x-ui.button>
 
                 <x-modal 
                     name="confirm-user-deletion" 

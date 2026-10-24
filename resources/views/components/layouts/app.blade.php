@@ -12,7 +12,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body  class="bg-white d-flex flex-column min-vh-100">
+<body class="bg-white d-flex flex-column min-vh-100">
     <header class="bg-white border-bottom">
         <x-layouts.navigation.navbar />
     </header>
