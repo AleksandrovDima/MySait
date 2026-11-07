@@ -17,7 +17,7 @@ class Button extends Component
         $this->classes = match($this->variant) {
             'danger' => 'btn btn-danger',
             'secondary' => 'btn btn-outline-secondary',
-            default => 'btn btn-orange text-white fw-bold px-4',
+            default => 'btn btn-base text-white fw-bold px-4',
         };
     }
 

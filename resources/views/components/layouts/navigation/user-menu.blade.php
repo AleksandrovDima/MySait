@@ -1,10 +1,10 @@
 <li class="nav-item">
     <x-ui.dropdown 
         id="userDropdown"
-        class="nav-link link-orange d-flex align-items-center gap-2"
+        class="nav-link link-base d-flex align-items-center gap-2"
     >
         <x-slot name="trigger">
-            <i class="bi bi-person-circle text-orange" aria-hidden="true"></i>
+            <i class="bi bi-person-circle text-base" aria-hidden="true"></i>
             {{ Auth::user()->name }}
             <i class="bi bi-chevron-down" aria-hidden="true"></i>
         </x-slot>

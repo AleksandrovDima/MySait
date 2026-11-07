@@ -1,42 +1,47 @@
-.text-orange {
-  color: #f97316;
+:root {
+  --color-base: #f97316;
+  --color-base-hover: #ea580c;
+  --color-base-light: color-mix(in srgb, var(--color-base) 25%, transparent);
+}
+
+.text-base {
+  color: var(--color-base);
 }
 
 .text-gray {
   color: #6c757d;
 }
 
-.link-orange:hover,
-.link-orange:hover span {
-  color: #f97316;
+.link-base:hover,
+.link-base:hover span {
+  color: var(--color-base);
 }
 
 .dropdown-toggle::after {
   display: none;
 }
 
-.btn-orange {
-  background-color: #f97316;
-  border-color: #f97316;
+.btn-base {
+  background-color: var(--color-base);
+  border-color: var(--color-base);
   color: white;
 }
-
-.btn-orange:hover {
-  background-color: #ea580c;
-  border-color: #ea580c;
+.btn-base:hover {
+  background-color: var(--color-base-hover);
+  border-color: var(--color-base-hover);
   color: white;
-}
-
-.form-check-input:checked {
-    background-color: #f97316 !important;
-    border-color: #f97316 !important;
 }
 
 .form-control:focus,
 .form-select:focus,
 .form-check-input:focus {
-    border-color: #f97316;
-    box-shadow: 0 0 0 0.25rem rgba(249, 115, 22, 0.15);
+  border-color: var(--color-base);
+  box-shadow: 0 0 0 0.25rem var(--color-base-light);
+}
+
+.form-check-input:checked {
+  background-color: var(--color-base) !important;
+  border-color: var(--color-base) !important;
 }
 
 @keyframes fadeOut {

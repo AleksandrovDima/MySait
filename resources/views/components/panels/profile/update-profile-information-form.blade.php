@@ -14,7 +14,7 @@
         </x-ui.button>
 
         @if (session('status') === 'profile-updated')
-            <p class="status-message text-orange mb-0 fade-out">
+            <p class="status-message text-base mb-0 fade-out">
                 {{ __('Saved.') }}
             </p>
         @endif
