@@ -25,7 +25,7 @@
 
     <footer class="py-5">
         <div class="container">
-            <p class="text-center text-gray mb-0 small">&copy; {{ date('Y') }} {{ config('branding.name') }}. Все права защищены.</p>
+            <p class="text-center text-gray mb-0 small">&copy; {{ date('Y') }} {{ config('branding.name') }}. {{ __("All rights reserved.") }}</p>
         </div>
     </footer>
 </body>

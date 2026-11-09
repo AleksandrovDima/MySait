@@ -13,7 +13,7 @@
         :autofocus="$autofocus"
         :autocomplete="$autocomplete"
         required
-        placeholder="Иван Иваныч"
+        :placeholder="__('Ivan Ivanych')"
         value="{{ old('name', $name ?? '') }}"
         :has-error="$errors->has('name')"
     />

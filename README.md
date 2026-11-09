@@ -1,58 +1,284 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# МойСайт
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Веб-приложение с авторизацией, профилем пользователя и управлением аккаунтом.
 
-## About Laravel
+## Стек
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Laravel** 13.0+ (PHP 8.4+)
+- **Laravel Breeze** (Blade-стек) — скаффолдинг авторизации и профиля
+- **Bootstrap** 5.3
+- **Vite** (сборка фронтенда)
+- **Blade** + компоненты
+- **Нативный `<dialog>`** (вместо Bootstrap Modal)
+- **CSS-переменные** для темизации
+- **Локализация** — `laravel-lang/*` (ru)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Требования
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.4+
+- Composer 2.11+
+- Node.js 18+
+- NPM
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Установка
 
 ```bash
-composer require laravel/boost --dev
+# 1. Клонировать репозиторий
+git clone <repo-url>
+cd <project-name>
 
-php artisan boost:install
+# 2. Установить PHP-зависимости
+composer install
+
+# 3. Установить JS-зависимости
+npm install
+
+# 4. Скопировать .env
+cp .env.example .env
+
+# 5. Сгенерировать ключ
+php artisan key:generate
+
+# 6. Настроить БД и локаль в .env
+# DB_DATABASE=...
+# DB_USERNAME=...
+# DB_PASSWORD=...
+# APP_LOCALE=ru
+# APP_FALLBACK_LOCALE=ru
+# APP_FAKER_LOCALE=ru_RU
+
+# 7. Миграции
+php artisan migrate
+
+# 8. Сборка фронтенда
+npm run build   # или npm run dev для разработки
+
+# 9. Запуск
+php artisan serve
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Откройте `http://127.0.0.1:8000`.
 
-## Contributing
+## Локализация
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Проект использует **русскую** локаль (`ru`). Настройки — в `.env`:
 
-## Code of Conduct
+```env
+APP_LOCALE=ru
+APP_FALLBACK_LOCALE=ru
+APP_FAKER_LOCALE=ru_RU
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Переводы подключаются через пакеты `laravel-lang/*` (установлены в `require-dev`):
 
-## Security Vulnerabilities
+- `laravel-lang/lang` — файлы переводов
+- `laravel-lang/locales` — локали
+- `laravel-lang/config` — конфигурация
+- `laravel-lang/publisher` — публикация
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Структура проекта
 
-## License
+```
+app/
+├── Http/Controllers/
+│   ├── Auth/                   # Breeze
+│   └── ProfileController.php
+├── View/Components/
+│   ├── Ui/
+│   │   └── Button.php          # Классовый компонент
+│   └── Forms/
+│       └── Fields/
+│           └── Password.php    # Классовый компонент
+└── Providers/
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+config/
+├── branding.php                # Логотип + название
+└── ...
+
+resources/
+├── css/
+│   ├── app.css
+│   ├── base.css                # Переменные, стили
+│   └── dialog.css              # Нативный <dialog>
+├── js/
+│   ├── app.js
+│   ├── bootstrap.js            # Bootstrap + axios
+│   ├── modal.js                # Автооткрытие модалок
+│   └── scroll-to-status.js     # Скролл к ошибкам/статусу
+└── views/
+    ├── pages/                  # Новые страницы
+    │   └── main.blade.php
+    ├── auth/                   # Breeze
+    ├── profile/                # Breeze
+    └── components/
+        ├── layouts/
+        │   ├── app.blade.php
+        │   ├── inner.blade.php
+        │   └── navigation/
+        │       ├── navbar.blade.php
+        │       ├── brand.blade.php
+        │       ├── user-menu.blade.php
+        │       └── guest-menu.blade.php
+        ├── ui/
+        │   ├── button.blade.php
+        │   ├── dropdown.blade.php
+        │   ├── modal.blade.php
+        │   └── links/
+        │       ├── nav.blade.php
+        │       ├── dropdown.blade.php
+        │       ├── text.blade.php
+        │       └── button.blade.php
+        ├── forms/
+        │   ├── error.blade.php
+        │   ├── inputs/
+        │   ├── groups/
+        │   ├── fields/
+        │   │   ├── email.blade.php
+        │   │   ├── name.blade.php
+        │   │   └── password.blade.php
+        │   ├── buttons/
+        │   └── actions.blade.php
+        └── panels/
+            ├── card-parts.blade.php
+            ├── messages/
+            └── profile/
+                ├── update-profile-information-form.blade.php
+                ├── update-password-form.blade.php
+                └── delete-user-form.blade.php
+```
+
+## Брендинг
+
+Настройки бренда — в `config/branding.php` и `.env`:
+
+```env
+BRAND_LOGO=/assets/title_image.svg
+BRAND_NAME="МойСайт"
+```
+
+Использование:
+
+```blade
+{{ config('branding.logo') }}
+{{ config('branding.name') }}
+```
+
+## CSS-переменные
+
+Все цвета — в `resources/css/base.css`:
+
+```css
+:root {
+    --color-base: #f97316;
+    --color-base-hover: #ea580c;
+    --color-base-light: color-mix(in srgb, var(--color-base) 25%, transparent);
+}
+```
+
+**Классы:**
+
+| Класс | Назначение |
+|-------|-----------|
+| `text-base` | Оранжевый текст |
+| `text-gray` | Серый текст |
+| `link-base` | Ссылка: hover → оранжевый |
+| `btn-base` | Кнопка (оранжевая) |
+
+**Смена темы** — изменить `--color-base` в одном месте.
+
+## Компоненты
+
+### UI
+
+| Компонент | Использование |
+|-----------|---------------|
+| `<x-ui.button variant="primary">` | Кнопка |
+| `<x-ui.dropdown id="...">` | Dropdown |
+| `<x-ui.modal name="...">` | Модалка (`<dialog>`) |
+| `<x-ui.links.nav>` | Ссылка в navbar |
+| `<x-ui.links.dropdown>` | Ссылка в dropdown |
+| `<x-ui.links.text>` | Текстовая ссылка |
+| `<x-ui.links.button>` | Кнопка-ссылка |
+
+### Формы
+
+| Компонент | Использование |
+|-----------|---------------|
+| `<x-forms.fields.email>` | Email |
+| `<x-forms.fields.name>` | Имя |
+| `<x-forms.fields.password>` | Пароль (опц. подтверждение) |
+| `<x-forms.groups.group>` | Группа (label + input + ошибки) |
+| `<x-forms.error>` | Ошибки |
+| `<x-forms.actions>` | Обёртка кнопок |
+
+### Панели
+
+| Компонент | Использование |
+|-----------|---------------|
+| `<x-panels.card-parts>` | Карточка с заголовком |
+| `<x-panels.profile.*>` | Формы профиля |
+
+## Модалки — нативный `<dialog>`
+
+Вместо Bootstrap Modal — **нативный** `<dialog>`:
+
+```blade
+<x-ui.button 
+    type="button"
+    onclick="document.getElementById('confirm-delete').showModal()"
+>
+    Удалить
+</x-ui.button>
+
+<x-ui.modal name="confirm-delete">
+    ...
+</x-ui.modal>
+```
+
+## JS
+
+| Файл | Назначение |
+|------|-----------|
+| `bootstrap.js` | Bootstrap + axios |
+| `modal.js` | Автооткрытие модалок при ошибках |
+| `scroll-to-status.js` | Скролл к ошибкам/статусу |
+
+## Скролл к ошибкам
+
+После валидации — автоскролл:
+
+1. **Ошибки** — к `.is-invalid`
+2. **Успех** — к `.status-message`
+3. **Модалка открыта** — не скроллит
+
+## Профиль
+
+Страница `/profile` — три секции:
+
+| Секция | Форма | Error bag |
+|--------|-------|-----------|
+| Profile Information | `name`, `email` | `default` |
+| Update Password | `current_password`, `password` | `updatePassword` |
+| Delete Account | `password` | `userDeletion` |
+
+**Error bag** — разделяет ошибки форм на одной странице.
+
+## Тесты
+
+```bash
+php artisan test
+```
+
+## Сборка
+
+```bash
+# Разработка
+npm run dev
+
+# Продакшен
+npm run build
+```
+
+## Лицензия
+
+MIT
